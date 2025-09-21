@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Long Hair - Cabelos Longos em 90 Dias</title>
+    <title>Long Beauty - Vitamina Para Cabelo, Pele e Unhas | Guia Gratuito</title>
+    <meta name="description" content="Long Beauty - Fórmula 100% natural com Biotina, Colágeno Verisol e +15 vitaminas. Combate a queda capilar, fortalece unhas e deixa a pele mais linda.">
+    
     <style>
         * {
             margin: 0;
@@ -12,9 +14,9 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #2c2c2c;
         }
 
         .container {
@@ -23,308 +25,718 @@
             padding: 0 20px;
         }
 
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* URGENCY BAR */
+        .urgency-bar {
+            background: linear-gradient(45deg, #ff1744, #d81b60);
             color: white;
-            padding: 60px 0;
+            padding: 12px 0;
             text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 2px 10px rgba(216, 27, 96, 0.4);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,122.7C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 20px;
-            animation: slideInDown 1s ease-out;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .hero .subtitle {
+            font-size: 1.6rem;
             margin-bottom: 30px;
-            animation: slideInUp 1s ease-out;
+            font-weight: 300;
+            opacity: 0.95;
         }
 
+        .hero .highlight {
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px auto;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .hero .highlight h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .product-image {
+            max-width: 300px;
+            height: 400px;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #1a237e;
+            font-weight: bold;
+            border: 3px solid #ffd700;
+        }
+
+        /* FORM SECTION */
         .form-section {
-            background: #f8f9fa;
-            padding: 60px 0;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eaf6 100%);
+            padding: 100px 0;
+            position: relative;
         }
 
         .lead-form {
             background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 500px;
+            padding: 60px;
+            border-radius: 25px;
+            box-shadow: 0 25px 60px rgba(26, 35, 126, 0.2);
+            max-width: 650px;
             margin: 0 auto;
-            animation: fadeInUp 1s ease-out;
+            position: relative;
+            border: 3px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .lead-form::before {
+            content: '🎁';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #1a237e, #3949ab);
+            font-size: 45px;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(26, 35, 126, 0.3);
         }
 
         .lead-form h2 {
             text-align: center;
-            margin-bottom: 30px;
-            color: #333;
+            margin-bottom: 15px;
+            color: #1a237e;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .lead-form .subtitle-form {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #555;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #1a237e;
+            font-size: 15px;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
             font-size: 16px;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
+            background: #fafafa;
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #1a237e;
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.2);
         }
 
         .submit-btn {
             width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 22px;
+            background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 15px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(26, 35, 126, 0.4);
         }
 
-        .benefits {
-            padding: 60px 0;
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        /* SUCCESS/ERROR MESSAGES */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+            border: 2px solid #4caf50;
+            color: #1b5e20;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .error-message {
+            display: none;
+            background: linear-gradient(135deg, #ffcdd2, #ef9a9a);
+            border: 2px solid #f44336;
+            color: #b71c1c;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* INGREDIENTS SECTION */
+        .ingredients {
+            padding: 100px 0;
             background: white;
+        }
+
+        .ingredients h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.8rem;
+            color: #1a237e;
+            font-weight: 800;
+        }
+
+        .ingredients-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 60px;
+            font-size: 1.3rem;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .ingredient-card {
+            background: linear-gradient(135deg, #f8f9ff, #e8eaf6);
+            padding: 35px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border-left: 5px solid #1a237e;
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.1);
+        }
+
+        .ingredient-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(26, 35, 126, 0.2);
+            border-left-color: #ffd700;
+        }
+
+        .ingredient-card h3 {
+            color: #1a237e;
+            margin-bottom: 18px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ingredient-card h3::before {
+            content: '✨';
+            font-size: 1.2rem;
+        }
+
+        .ingredient-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 14.5px;
+        }
+
+        /* BENEFITS SECTION */
+        .benefits {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+            color: white;
+        }
+
+        .benefits h2 {
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+            font-size: 2.8rem;
+            font-weight: 800;
         }
 
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
         }
 
         .benefit-card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
             text-align: center;
-            padding: 30px 20px;
-            border-radius: 10px;
-            background: #f8f9fa;
-            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .benefit-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.15);
+            border-color: #ffd700;
         }
 
         .benefit-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: #ffd700;
+        }
+
+        .benefit-card h3 {
+            color: white;
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .benefit-card p {
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+        }
+
+        /* GUARANTEE SECTION */
+        .guarantee {
+            background: linear-gradient(135deg, #ffd700 0%, #ffeb3b 100%);
+            color: #1a237e;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .guarantee h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        .guarantee-badge {
+            background: #1a237e;
+            color: white;
+            padding: 25px 40px;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 25px 0;
+            box-shadow: 0 10px 30px rgba(26, 35, 126, 0.3);
+        }
+
+        .guarantee p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* FAQ SECTION */
+        .faq {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1a237e;
+            font-size: 2.8rem;
+            font-weight: 800;
+        }
+
+        .faq-item {
+            background: #f8f9ff;
             margin-bottom: 20px;
-        }
-
-        .testimonials {
-            background: #f8f9fa;
-            padding: 60px 0;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-        }
-
-        .popup {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 40px;
             border-radius: 15px;
-            max-width: 400px;
-            width: 90%;
+            overflow: hidden;
+            border: 2px solid rgba(26, 35, 126, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .close-popup {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
+        .faq-item:hover {
+            border-color: #1a237e;
+        }
+
+        .faq-question {
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+            color: white;
+            padding: 25px;
+            font-weight: 600;
             cursor: pointer;
-            color: #999;
+            position: relative;
+            font-size: 16px;
         }
 
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 25px;
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
         }
 
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .faq-answer {
+            padding: 25px;
+            display: none;
+            color: #555;
+            line-height: 1.7;
+            background: white;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .faq-item.active .faq-answer {
+            display: block;
         }
 
+        .faq-item.active .faq-question::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #1a237e;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        /* ANIMATIONS */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .lead-form {
-                padding: 30px 20px;
+                padding: 40px 25px;
+                margin: 0 15px;
             }
+            
+            .ingredients-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Special highlight for important info */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 3px solid #ff9800;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            color: #e65100;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
+    <!-- URGENCY BAR -->
+    <div class="urgency-bar">
+        🚨 ATENÇÃO: ESTE PRODUTO ESTÁ PRESTES A ESGOTAR, POR ISSO TEM UMA OFERTA ESPECIAL APENAS HOJE! 🚨
+    </div>
+
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <h1>✨ LONG HAIR ✨</h1>
-            <p>Cabelos longos e saudáveis em apenas 90 dias</p>
-            <p><strong>🎁 GUIA GRATUITO: "7 Segredos para Acelerar o Crescimento Capilar"</strong></p>
-        </div>
-    </section>
-
-    <!-- Form Section -->
-    <section class="form-section">
-        <div class="container">
-            <form class="lead-form" id="leadForm">
-                <h2>🎁 Receba SEU GUIA GRÁTIS</h2>
+            <div class="hero-content">
+                <h1>✨ LONG BEAUTY ✨</h1>
+                <p class="subtitle">Fórmula 100% Natural para Cabelos, Pele e Unhas</p>
                 
-                <div class="form-group">
-                    <label for="nome">Seu Nome Completo:</label>
-                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+                <div class="product-image">
+                    LONG BEAUTY<br>
+                    60 Cápsulas<br>
+                    💊 Fórmula Premium
                 </div>
-
-                <div class="form-group">
-                    <label for="email">Seu Melhor Email:</label>
-                    <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="telefone">WhatsApp (opcional):</label>
-                    <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
-                </div>
-
-                <div class="form-group">
-                    <label for="tipo_cabelo">Tipo do seu cabelo:</label>
-                    <select id="tipo_cabelo" name="tipo_cabelo" required>
-                        <option value="">Selecione...</option>
-                        <option value="oleoso">Oleoso</option>
-                        <option value="seco">Seco</option>
-                        <option value="misto">Misto</option>
-                        <option value="cacheado">Cacheado</option>
-                        <option value="liso">Liso</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="problema_principal">Principal problema:</label>
-                    <select id="problema_principal" name="problema_principal" required>
-                        <option value="">Selecione...</option>
-                        <option value="crescimento_lento">Crescimento muito lento</option>
-                        <option value="queda">Queda excessiva</option>
-                        <option value="ressecamento">Ressecamento</option>
-                        <option value="quebra">Quebra das pontas</option>
-                        <option value="falta_volume">Falta de volume</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    📥 QUERO MEU GUIA GRÁTIS AGORA!
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="benefits">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 20px;">📚 O que você vai descobrir no guia:</h2>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🧪</div>
-                    <h3>Fórmula Científica</h3>
-                    <p>Métodos comprovados por estudos de Harvard e outras universidades</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">⏰</div>
-                    <h3>Resultados em 30 dias</h3>
-                    <p>Veja os primeiros sinais de crescimento já no primeiro mês</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">🏠</div>
-                    <h3>Receitas Caseiras</h3>
-                    <p>Ingredientes que você tem em casa para turbinar o crescimento</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">💆‍♀️</div>
-                    <h3>Massagem Especial</h3>
-                    <p>Técnica de 5 minutos que ativa a circulação do couro cabeludo</p>
+                
+                <div class="highlight">
+                    <h3>🎁 RECEBA GRÁTIS</h3>
+                    <p><strong>"Guia Completo: Como Maximizar os Resultados do Long Beauty"</strong></p>
+                    <p>✨ Combatendo a queda ✨ Unhas mais fortes ✨ Sua pele mais linda</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
+    <!-- FORM SECTION -->
+    <section class="form-section">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px;">💬 O que nossas clientes dizem:</h2>
+            <form class="lead-form" id="leadForm">
+                <h2>🎁 Receba SEU GUIA EXCLUSIVO</h2>
+                <p class="subtitle-form">Preencha seus dados e receba o guia personalizado em 2 minutos</p>
+                
+                <div class="success-message" id="successMessage">
+                    <h3>✅ Parabéns!</h3>
+                    <p>Seu guia exclusivo foi enviado para seu email. Verifique também a caixa de spam!</p>
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    <h3>❌ Ops! Algo deu errado</h3>
+                    <p>Houve um problema ao enviar. Tente novamente ou entre em contato conosco.</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nome">👤 Seu Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">📧 Seu Melhor Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">📱 WhatsApp (opcional):</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+                </div>
+
+                <div class="form-group">
+                    <label for="objetivo_principal">🎯 Seu principal objetivo com o Long Beauty:</label>
+                    <select id="objetivo_principal" name="objetivo_principal" required>
+                        <option value="">Selecione seu objetivo...</option>
+                        <option value="combater_queda">✨ Combater a queda capilar</option>
+                        <option value="fortalecer_unhas">💅 Fortalecer as unhas</option>
+                        <option value="melhorar_pele">✨ Melhorar a pele</option>
+                        <option value="crescimento_cabelo">💇‍♀️ Acelerar crescimento do cabelo</option>
+                        <option value="todos_beneficios">🌟 Todos os benefícios</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tempo_uso">⏰ Por quanto tempo pretende usar:</label>
+                    <select id="tempo_uso" name="tempo_uso" required>
+                        <option value="">Selecione o período...</option>
+                        <option value="3_meses">3 meses (recomendado para resultados completos)</option>
+                        <option value="6_meses">6 meses (resultados duradouros)</option>
+                        <option value="uso_continuo">Uso contínuo (prevenção)</option>
+                        <option value="ainda_decidindo">Ainda estou decidindo</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    📥 QUERO MEU GUIA EXCLUSIVO AGORA!
+                </button>
+
+                <div class="highlight-box">
+                    <h3>🔥 BÔNUS ESPECIAL!</h3>
+                    <p>Quem baixar o guia hoje também recebe o <strong>"Cronograma de 90 dias"</strong> para maximizar os resultados!</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- INGREDIENTS SECTION -->
+    <section class="ingredients">
+        <div class="container">
+            <h2>🧪 Fórmula Científica Long Beauty</h2>
+            <p class="ingredients-subtitle">Conheça os ingredientes premium que fazem toda a diferença</p>
             
-            <div class="testimonial-card">
-                <p><strong>Marina Silva:</strong> "Em 3 meses meu cab
+            <div class="ingredients-grid">
+                <div class="ingredient-card">
+                    <h3>BIOTINA</h3>
+                    <p>Biotina é a base de Vitamina B7, que estimula a produção de queratina necessária para a saúde do cabelo, além de promover a hidratação. Também é importante para a pele, já que a mantém saudável e evita o ressecamento.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h3>COLÁGENO VERISOL</h3>
+                    <p>O melhor colágeno para cabelo é sem dúvidas o colágeno verisol, o único com comprovação científica acerca dos seus benefícios para a beleza não só do cabelo, mas da pele e das unhas também, ele melhora a estrutura dos cabelos, ampliando significativamente a espessura dos fios.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h3>METILSULFONILMETANO</h3>
+                    <p>Conhecida como cobalamina auxilia na oxigenação dos folículos capilares resultando na potencialização do crescimento de fios mais saudáveis e fortes, evitando que fiquem suscetíveis à quebra e à queda.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h3>RESVERATROL</h3>
+                    <p>O Resveratrol Antioxidante é um polifenol extraído da pele da uva, conhecido por suas propriedades antioxidantes. Ajuda a proteger os cabelos contra os radicais livres, como o estresse oxidativo e os raios UV, responsáveis pela degradação da cor.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h3>ÁCIDO HIALURÔNICO</h3>
+                    <p>O ácido hialurônico preenche a fibra capilar e fortalece os fios. Se o ácido hialurônico já deixa a pele bem hidratada, nos cabelos é mais do que uma hidratação: é uma revolução! O ativo age de forma preenchedora, atuando diretamente na fibra capilar.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h3>METIONINA</h3>
+                    <p>A metionina ajuda a manter a condição ideal da pele, cabelos e unhas. É um aminoácido essencial, o que significa que não pode ser produzida pelo corpo e deve ser obtida por meio da alimentação.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h3>ZINCO</h3>
+                    <p>O zinco é um antioxidante que auxilia na proteção dos danos causados pelos radicais livres, auxilia na visão, auxilia no metabolismo da vitamina A, o zinco contribui para a manutenção do cabelo, da pele e das unhas.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h3>CISTEÍNA</h3>
+                    <p>Cisteína é um aminoácido importante para a saúde dos cabelos, unhas e da queratina da pele. Auxilia na formação de colágeno, promovendo assim a textura do cabelo, a elasticidade da pele e unhas saudáveis.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h3>+ 15 VITAMINAS E MINERAIS</h3>
+                    <p>Os sinais na pele são percebidos porque a melhora no sono, na alimentação, na energia e no estresse/ansiedade refletem no organismo de modo geral.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section class="benefits">
+        <div class="container">
+            <h2>🌟 Benefícios Comprovados</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h3>Combate a Queda</h3>
+                    <p>Reduz significativamente a queda capilar e fortalece os fios desde a raiz</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💅</div>
+                    <h3>Unhas Mais Fortes</h3>
+                    <p>Fortalece as unhas, reduzindo quebras e acelerando o crescimento saudável</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h3>Pele Mais Linda</h3>
+                    <p>Melhora a textura, hidratação e aparência geral da pele</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔬</div>
+                    <h3>Fórmula 100% Natural</h3>
+                    <p>Ingredientes puros e naturais, testados e aprovados pela ANVISA</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Resultados Rápidos</h3>
+                    <p>Primeiros resultados visíveis já nas primeiras semanas de uso</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Proteção Antioxidante</h3>
+                    <p>Protege contra radicais livres e envelhecimento precoce</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GUARANTEE SECTION -->
+    <section class="guarantee">
+        <div class="container">
+            <h2>🛡️ Garantia Total de Satisfação</h2>
+            <div class="guarantee-badge">90 DIAS DE GARANTIA</div>
+            <p>Você tem até 90 dias para pedir reembolso total da sua compra, maravilhoso né? Então aproveite hoje e nós garantimos o seu dinheiro por 90 dias, você não paga nada por tentar!</p>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">
+        <div class="container">
+            <h2>❓ Perguntas Frequentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Como devo tomar o Long Beauty?</div>
+                <div class="faq-answer">Indica-se o uso de LONG BEAUTY, recomendamos 1 cápsula, duas vezes ao dia nas principais refeições, ou duas cápsulas antes da refeição principal. Recomendamos o uso contínuo, pois os resultados podem variar por pessoa.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">O Long Beauty é aprovado pela ANVISA?</div>
+                <div class="faq-answer">Sim, o LONG BEAUTY é certificado e autorizado para comercialização em todo território Nacional através do anexo 1 da RDC 27/2010 em conformidade com a RDC 23/2000 da ANVISA.</div>
