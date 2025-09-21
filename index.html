@@ -94,14 +94,28 @@
             color: #ffeb3b;
         }
 
+        .product-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
         .product-image {
+            max-width: 350px;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: block;
+            border: 4px solid #ffeb3b;
+        }
+
+        .product-fallback {
+            display: none;
             max-width: 300px;
             height: 400px;
             margin: 30px auto;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             background: linear-gradient(135deg, #ffebee 0%, #fce4ec 100%);
-            display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
@@ -536,10 +550,19 @@
                 <h1>✨ LONG BEAUTY ✨</h1>
                 <p class="subtitle">Fórmula 100% Natural para Cabelos, Pele e Unhas</p>
                 
-                <div class="product-image">
-                    LONG BEAUTY<br>
-                    60 Cápsulas<br>
-                    💊 Fórmula Premium
+                <div class="product-container">
+                    <!-- 📸 AQUI VOCÊ COLOCA A URL DA IMAGEM DO PRODUTO -->
+                    <img src="https://longbeauty.com.br/images/produto-longbeauty.jpg" 
+                         alt="Long Beauty - Fórmula para Cabelos, Pele e Unhas" 
+                         class="product-image"
+                         onerror="this.style.display='none'; document.querySelector('.product-fallback').style.display='flex';">
+                    
+                    <!-- Fallback se a imagem não carregar -->
+                    <div class="product-fallback">
+                        LONG BEAUTY<br>
+                        60 Cápsulas<br>
+                        💊 Fórmula Premium
+                    </div>
                 </div>
                 
                 <div class="highlight">
@@ -737,16 +760,4 @@
                 <div class="faq-answer">Indica-se o uso de LONG BEAUTY, recomendamos 1 cápsula, duas vezes ao dia nas principais refeições, ou duas cápsulas antes da refeição principal. Recomendamos o uso contínuo, pois os resultados podem variar por pessoa.</div>
             </div>
 
-            <div class="faq-item">
-                <div class="faq-question">O Long Beauty é aprovado pela ANVISA?</div>
-                <div class="faq-answer">Sim, o LONG BEAUTY é certificado e autorizado para comercialização em todo território Nacional através do anexo 1 da RDC 27/2010 em conformidade com a RDC 23/2000 da ANVISA.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Qual o prazo de entrega?</div>
-                <div class="faq-answer">O prazo médio de entrega para o Brasil é de 7 a 15 dias úteis. O produto só é enviado após a confirmação do seu pagamento do seu cartão de crédito, PIX ou após a confirmação do pagamento do boleto.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Quais formas de pagamento vocês aceitam?</div>
-                <div class="faq-
+            <div class="faq-
