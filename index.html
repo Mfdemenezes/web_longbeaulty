@@ -755,9 +755,113 @@
         <div class="container">
             <h2>❓ Perguntas Frequentes</h2>
             
-            <div class="faq-item">
-                <div class="faq-question">Como devo tomar o Long Beauty?</div>
-                <div class="faq-answer">Indica-se o uso de LONG BEAUTY, recomendamos 1 cápsula, duas vezes ao dia nas principais refeições, ou duas cápsulas antes da refeição principal. Recomendamos o uso contínuo, pois os resultados podem variar por pessoa.</div>
-            </div>
+    <script>
+        // 🎯 URL DO SEU N8N WEBHOOK - CONFIGURAÇÃO CORRETA
+        const N8N_WEBHOOK_URL = 'https://n8n.mbam.com.br/webhook-test/captura-lead';
 
-            <div class="faq-
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('leadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Loading state
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.pointerEvents = 'none';
+            submitBtn.textContent = 'ENVIANDO...';
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {
+                nome: formData.get('nome'),
+                email: formData.get('email'),
+                telefone: formData.get('telefone'),
+                objetivo_principal: formData.get('objetivo_principal'),
+                tempo_uso: formData.get('tempo_uso'),
+                source: 'landing_page_longbeauty',
+                utm_source: new URLSearchParams(window.location.search).get('utm_source') || '',
+                utm_medium: new URLSearchParams(window.location.search).get('utm_medium') || '',
+                utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign') || '',
+                timestamp: new Date().toISOString(),
+                page_url: window.location.href,
+                produto: 'Long Beauty'
+            };
+            
+            try {
+                const response = await fetch(N8N_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    // Success
+                    successMessage.style.display = 'block';
+                    this.reset();
+                    
+                    // Track conversion
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead');
+                    }
+                    
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'
+                        });
+                    }
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                    
+                } else {
+                    throw new Error('Erro na resposta do servidor');
+                }
+                
+            } catch (error) {
+                console.error('Erro:', error);
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+            } finally {
+                // Reset button
+                submitBtn.style.opacity = '1';
+                submitBtn.style.pointerEvents = 'auto';
+                submitBtn.textContent = '📥 QUERO MEU GUIA EXCLUSIVO AGORA!';
+            }
+        });
+
+        // UTM tracking
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('utm_source')) {
+            localStorage.setItem('utm_source', urlParams.get('utm_source'));
+            localStorage.setItem('utm_medium', urlParams.get('utm_medium') || '');
+            localStorage.setItem('utm_campaign', urlParams.get('utm_campaign') || '');
+        }
+    </script>
+</body>
+</html>
