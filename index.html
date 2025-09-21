@@ -1,126 +1,4 @@
-            <div class="faq-item">
-                <div class="faq-question">O Long Beauty é aprovado pela ANVISA?</div>
-                <div class="faq-answer">Sim, o LONG BEAUTY é certificado e autorizado para comercialização em todo território Nacional através do anexo 1 da RDC 27/2010 em conformidade com a RDC 23/2000 da ANVISA.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Qual o prazo de entrega?</div>
-                <div class="faq-answer">O prazo médio de entrega para o Brasil é de 7 a 15 dias úteis. O produto só é enviado após a confirmação do seu pagamento do seu cartão de crédito, PIX ou após a confirmação do pagamento do boleto.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Quais formas de pagamento vocês aceitam?</div>
-                <div class="faq-answer">Aceitamos os cartões de crédito mais usados: visa, mastercard e outros. Pix, o envio é imediato. Você também pode optar pela opção de boleto bancário, que precisa de 2 dias para contabilizar no nosso sistema.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Por quanto tempo devo usar para ver resultados?</div>
-                <div class="faq-answer">Recomendamos o uso por no mínimo 3 meses para obter os melhores resultados, e todos os efeitos do composto. Pode também, ser utilizado sempre, até mesmo para a prevenção.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Long Beauty. Todos os direitos reservados.</p>
-            <p>Este site é 100% seguro contra recursos de má intenção. Suas informações pessoais são sigilosas segundo a nossa Política de Privacidade e a entrega é garantida!</p>
-            <p>O LONG BEAUTY é vendido diariamente para pessoas de todo o Brasil.</p>
-        </div>
-    </footer>
-
-    <script>
-        // CONFIGURAÇÃO - SUBSTITUA PELA URL DO SEU N8N
-        const N8N_WEBHOOK_URL = 'https://SEU-N8N.com/webhook/captura-lead';
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                
-                // Close all FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    faqItem.classList.add('active');
-                }
-            });
-        });
-
-        // Form submission
-        document.getElementById('leadForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const successMessage = document.getElementById('successMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Loading state
-            submitBtn.style.opacity = '0.7';
-            submitBtn.style.pointerEvents = 'none';
-            submitBtn.textContent = 'ENVIANDO...';
-            
-            // Hide previous messages
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = {
-                nome: formData.get('nome'),
-                email: formData.get('email'),
-                telefone: formData.get('telefone'),
-                objetivo_principal: formData.get('objetivo_principal'),
-                tempo_uso: formData.get('tempo_uso'),
-                source: 'landing_page_longbeauty',
-                utm_source: new URLSearchParams(window.location.search).get('utm_source') || '',
-                utm_medium: new URLSearchParams(window.location.search).get('utm_medium') || '',
-                utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign') || '',
-                timestamp: new Date().toISOString(),
-                page_url: window.location.href,
-                produto: 'Long Beauty'
-            };
-            
-            try {
-                const response = await fetch(N8N_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                if (response.ok) {
-                    // Success
-                    successMessage.style.display = 'block';
-                    this.reset();
-                    
-                    // Track conversion
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead');
-                    }
-                    
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'conversion', {
-                            'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'
-                        });
-                    }
-                    
-                    // Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                    
-                } else {
-                    throw new Error('Erro na resposta do servidor');
-                }
-                
-            } catch (error) {
-                console.error('Erro:', error);
-                errorMessage.style.display = 'block';
-                errorMessage.scrollIntoView({ behavior: 'smooth' });<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -286,7 +164,7 @@
             display: block;
             margin-bottom: 10px;
             font-weight: 600;
-            color: #d81b60;
+            color: #cf2e2e;
             font-size: 15px;
         }
 
@@ -304,16 +182,16 @@
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #d81b60;
+            border-color: #cf2e2e;
             background: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.2);
+            box-shadow: 0 8px 25px rgba(207, 46, 46, 0.2);
         }
 
         .submit-btn {
             width: 100%;
             padding: 22px;
-            background: linear-gradient(135deg, #d81b60 0%, #e91e63 100%);
+            background: linear-gradient(135deg, #cf2e2e 0%, #e53e3e 100%);
             color: white;
             border: none;
             border-radius: 15px;
@@ -329,7 +207,7 @@
 
         .submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.4);
+            box-shadow: 0 15px 35px rgba(207, 46, 46, 0.4);
         }
 
         .submit-btn::before {
@@ -382,7 +260,7 @@
             text-align: center;
             margin-bottom: 20px;
             font-size: 2.8rem;
-            color: #d81b60;
+            color: #cf2e2e;
             font-weight: 800;
         }
 
@@ -405,18 +283,18 @@
             padding: 35px;
             border-radius: 20px;
             transition: all 0.3s ease;
-            border-left: 5px solid #d81b60;
-            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.1);
+            border-left: 5px solid #cf2e2e;
+            box-shadow: 0 5px 15px rgba(207, 46, 46, 0.1);
         }
 
         .ingredient-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(216, 27, 96, 0.2);
+            box-shadow: 0 20px 40px rgba(207, 46, 46, 0.2);
             border-left-color: #ffeb3b;
         }
 
         .ingredient-card h3 {
-            color: #d81b60;
+            color: #cf2e2e;
             margin-bottom: 18px;
             font-size: 1.4rem;
             font-weight: 700;
@@ -439,7 +317,7 @@
         /* BENEFITS SECTION */
         .benefits {
             padding: 100px 0;
-            background: linear-gradient(135deg, #d81b60 0%, #e91e63 100%);
+            background: linear-gradient(135deg, #cf2e2e 0%, #e53e3e 100%);
             color: white;
         }
 
@@ -494,7 +372,7 @@
         /* GUARANTEE SECTION */
         .guarantee {
             background: linear-gradient(135deg, #ffeb3b 0%, #ffc107 100%);
-            color: #d81b60;
+            color: #cf2e2e;
             padding: 80px 0;
             text-align: center;
         }
@@ -506,7 +384,7 @@
         }
 
         .guarantee-badge {
-            background: #d81b60;
+            background: #cf2e2e;
             color: white;
             padding: 25px 40px;
             border-radius: 50px;
@@ -514,7 +392,7 @@
             font-weight: bold;
             display: inline-block;
             margin: 25px 0;
-            box-shadow: 0 10px 30px rgba(216, 27, 96, 0.3);
+            box-shadow: 0 10px 30px rgba(207, 46, 46, 0.3);
         }
 
         .guarantee p {
@@ -533,7 +411,7 @@
         .faq h2 {
             text-align: center;
             margin-bottom: 60px;
-            color: #d81b60;
+            color: #cf2e2e;
             font-size: 2.8rem;
             font-weight: 800;
         }
@@ -543,16 +421,16 @@
             margin-bottom: 20px;
             border-radius: 15px;
             overflow: hidden;
-            border: 2px solid rgba(216, 27, 96, 0.1);
+            border: 2px solid rgba(207, 46, 46, 0.1);
             transition: all 0.3s ease;
         }
 
         .faq-item:hover {
-            border-color: #d81b60;
+            border-color: #cf2e2e;
         }
 
         .faq-question {
-            background: linear-gradient(135deg, #d81b60, #e91e63);
+            background: linear-gradient(135deg, #cf2e2e, #e53e3e);
             color: white;
             padding: 25px;
             font-weight: 600;
@@ -589,7 +467,7 @@
 
         /* FOOTER */
         .footer {
-            background: #d81b60;
+            background: #cf2e2e;
             color: white;
             padding: 60px 0;
             text-align: center;
@@ -639,7 +517,7 @@
         }
 
         .highlight-box h3 {
-            color: #d81b60;
+            color: #cf2e2e;
             margin-bottom: 15px;
             font-size: 1.4rem;
         }
@@ -859,112 +737,16 @@
                 <div class="faq-answer">Indica-se o uso de LONG BEAUTY, recomendamos 1 cápsula, duas vezes ao dia nas principais refeições, ou duas cápsulas antes da refeição principal. Recomendamos o uso contínuo, pois os resultados podem variar por pessoa.</div>
             </div>
 
-    <script>
-        // CONFIGURAÇÃO - SUBSTITUA PELA URL DO SEU N8N
-        const N8N_WEBHOOK_URL = 'https://SEU-N8N.com/webhook/captura-lead';
+            <div class="faq-item">
+                <div class="faq-question">O Long Beauty é aprovado pela ANVISA?</div>
+                <div class="faq-answer">Sim, o LONG BEAUTY é certificado e autorizado para comercialização em todo território Nacional através do anexo 1 da RDC 27/2010 em conformidade com a RDC 23/2000 da ANVISA.</div>
+            </div>
 
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                
-                // Close all FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    faqItem.classList.add('active');
-                }
-            });
-        });
+            <div class="faq-item">
+                <div class="faq-question">Qual o prazo de entrega?</div>
+                <div class="faq-answer">O prazo médio de entrega para o Brasil é de 7 a 15 dias úteis. O produto só é enviado após a confirmação do seu pagamento do seu cartão de crédito, PIX ou após a confirmação do pagamento do boleto.</div>
+            </div>
 
-        // Form submission
-        document.getElementById('leadForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const successMessage = document.getElementById('successMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Loading state
-            submitBtn.style.opacity = '0.7';
-            submitBtn.style.pointerEvents = 'none';
-            submitBtn.textContent = 'ENVIANDO...';
-            
-            // Hide previous messages
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = {
-                nome: formData.get('nome'),
-                email: formData.get('email'),
-                telefone: formData.get('telefone'),
-                objetivo_principal: formData.get('objetivo_principal'),
-                tempo_uso: formData.get('tempo_uso'),
-                source: 'landing_page_longbeauty',
-                utm_source: new URLSearchParams(window.location.search).get('utm_source') || '',
-                utm_medium: new URLSearchParams(window.location.search).get('utm_medium') || '',
-                utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign') || '',
-                timestamp: new Date().toISOString(),
-                page_url: window.location.href,
-                produto: 'Long Beauty'
-            };
-            
-            try {
-                const response = await fetch(N8N_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                if (response.ok) {
-                    // Success
-                    successMessage.style.display = 'block';
-                    this.reset();
-                    
-                    // Track conversion
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead');
-                    }
-                    
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'conversion', {
-                            'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'
-                        });
-                    }
-                    
-                    // Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                    
-                } else {
-                    throw new Error('Erro na resposta do servidor');
-                }
-                
-            } catch (error) {
-                console.error('Erro:', error);
-                errorMessage.style.display = 'block';
-                errorMessage.scrollIntoView({ behavior: 'smooth' });
-            } finally {
-                // Reset button
-                submitBtn.style.opacity = '1';
-                submitBtn.style.pointerEvents = 'auto';
-                submitBtn.textContent = '📥 QUERO MEU GUIA EXCLUSIVO AGORA!';
-            }
-        });
-
-        // UTM tracking
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('utm_source')) {
-            localStorage.setItem('utm_source', urlParams.get('utm_source'));
-            localStorage.setItem('utm_medium', urlParams.get('utm_medium') || '');
-            localStorage.setItem('utm_campaign', urlParams.get('utm_campaign') || '');
-        }
-    </script>
-            
+            <div class="faq-item">
+                <div class="faq-question">Quais formas de pagamento vocês aceitam?</div>
+                <div class="faq-
