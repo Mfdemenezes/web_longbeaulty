@@ -756,7 +756,7 @@
             <h2>❓ Perguntas Frequentes</h2>
             
     <script>
-        // 🎯 URL DO SEU N8N WEBHOOK - CONFIGURAÇÃO CORRETA
+        // 🎯 URL CORRETA DO SEU N8N WEBHOOK
         const N8N_WEBHOOK_URL = 'https://n8n.mbam.com.br/webhook-test/captura-lead';
 
         // FAQ Accordion
@@ -794,22 +794,25 @@
             successMessage.style.display = 'none';
             errorMessage.style.display = 'none';
             
-            // Get form data
+            // Get form data - FORMATADO PARA SEU N8N
             const formData = new FormData(this);
             const data = {
                 nome: formData.get('nome'),
                 email: formData.get('email'),
                 telefone: formData.get('telefone'),
-                objetivo_principal: formData.get('objetivo_principal'),
-                tempo_uso: formData.get('tempo_uso'),
+                // CAMPOS CORRETOS PARA O WORKFLOW
+                tipo_cabelo: formData.get('objetivo_principal'), 
+                problema_principal: formData.get('tempo_uso'), 
                 source: 'landing_page_longbeauty',
                 utm_source: new URLSearchParams(window.location.search).get('utm_source') || '',
                 utm_medium: new URLSearchParams(window.location.search).get('utm_medium') || '',
                 utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign') || '',
                 timestamp: new Date().toISOString(),
-                page_url: window.location.href,
-                produto: 'Long Beauty'
+                page_url: window.location.href
             };
+            
+            console.log('🚀 Enviando para:', N8N_WEBHOOK_URL);
+            console.log('📊 Dados:', data);
             
             try {
                 const response = await fetch(N8N_WEBHOOK_URL, {
@@ -820,8 +823,11 @@
                     body: JSON.stringify(data)
                 });
                 
-                if (response.ok) {
+                console.log('✅ Status da resposta:', response.status);
+                
+                if (response.ok || response.status === 200) {
                     // Success
+                    console.log('🎉 Lead enviado com sucesso!');
                     successMessage.style.display = 'block';
                     this.reset();
                     
@@ -840,13 +846,24 @@
                     successMessage.scrollIntoView({ behavior: 'smooth' });
                     
                 } else {
-                    throw new Error('Erro na resposta do servidor');
+                    const errorText = await response.text();
+                    console.error('❌ Erro do servidor:', response.status, errorText);
+                    throw new Error(`Erro ${response.status}: ${errorText}`);
                 }
                 
             } catch (error) {
-                console.error('Erro:', error);
-                errorMessage.style.display = 'block';
-                errorMessage.scrollIntoView({ behavior: 'smooth' });
+                console.error('🔥 Erro completo:', error);
+                
+                // Mostrar erro mais detalhado para o usuário
+                const errorDiv = document.getElementById('errorMessage');
+                errorDiv.innerHTML = `
+                    <h3>❌ Erro ao enviar</h3>
+                    <p>Não foi possível enviar seus dados. Detalhes do erro:</p>
+                    <p><small>${error.message}</small></p>
+                    <p>Tente novamente ou entre em contato conosco.</p>
+                `;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth' });
             } finally {
                 // Reset button
                 submitBtn.style.opacity = '1';
@@ -862,6 +879,9 @@
             localStorage.setItem('utm_medium', urlParams.get('utm_medium') || '');
             localStorage.setItem('utm_campaign', urlParams.get('utm_campaign') || '');
         }
+
+        // Log inicial para debug
+        console.log('🎯 N8N Webhook configurado:', N8N_WEBHOOK_URL);
     </script>
 </body>
 </html>
